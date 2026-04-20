@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical AI System</title>
+</head>
+<body>
+
+<h2>Upload MRI Image</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Predict</button>
+</form>
+
+{% if result %}
+    <h3>Prediction: {{ result.prediction }}</h3>
+    <p>Confidence: {{ result.confidence }}</p>
+    <p>Uncertainty: {{ result.uncertainty }}</p>
+
+    <h3>Clinical Report</h3>
+    <pre>{{ result.report }}</pre>
+
+    <h3>Grad-CAM</h3>
+    <img src="{{ image_path }}" width="300">
+{% endif %}
+
+</body>
+</html>

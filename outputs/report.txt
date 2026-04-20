@@ -1,0 +1,7 @@
+
+Prediction: notumor
+Confidence: 0.72
+
+Interpretation:
+The model predicts notumor with a confidence of 0.72.
+The uncertainty level is MODERATE uncertainty.
