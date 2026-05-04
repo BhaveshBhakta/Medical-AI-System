@@ -15,6 +15,7 @@ from src.grad_cam import GradCAM, overlay_heatmap
 from src.uncertainty import mc_dropout_predict, compute_entropy
 from src.report import generate_report
 from src.llm_explainer import generate_explanation
+from src.agent_pipeline import final_agent
 
 app = Flask(__name__)
 
@@ -77,7 +78,7 @@ def index():
             uncertainty = float(compute_entropy(mean_pred[0]))
 
             # ===== Report =====
-            report = generate_explanation(
+            report = final_agent(
                 classes[pred_class],
                 confidence,
                 uncertainty

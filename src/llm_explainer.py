@@ -1,5 +1,6 @@
 import os
 from groq import Groq
+from src.rag import retrieve
 
 def get_client():
     from groq import Groq
@@ -11,24 +12,28 @@ def generate_explanation(prediction, confidence, uncertainty):
     
     client = get_client()
     
+    context = retrieve(prediction)
+
     prompt = f"""
-You are a medical AI assistant.
+    You are a medical AI assistant.
 
-A brain MRI has been analyzed by a deep learning model.
+    Model Output:
+    - Prediction: {prediction}
+    - Confidence: {confidence:.2f}
+    - Uncertainty: {uncertainty:.2f}
 
-Prediction: {prediction}
-Confidence: {confidence:.2f}
-Uncertainty: {uncertainty:.2f}
+    Relevant Medical Knowledge:
+    {context}
 
-Explain this result in a clinical, human-friendly way.
+    Using BOTH the model output and medical knowledge, generate a clinical explanation.
 
-Include:
-- What this condition means
-- How confident the model is
-- Whether the result should be trusted
-- When a doctor should be consulted
+    Include:
+    - Explanation of condition
+    - Interpretation of confidence and uncertainty
+    - Whether result is reliable
+    - Recommendation for next steps
 
-Keep it simple but professional.
+    Keep it clear and professional.
 """
 
     response = client.chat.completions.create(
