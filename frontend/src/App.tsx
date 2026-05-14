@@ -1,27 +1,23 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import LandingPage from './components/LandingPage'
-import Dashboard from './components/Dashboard'
-
-enum View {
-  LANDING = 'landing',
-  DASHBOARD = 'dashboard'
-}
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<View>(View.LANDING)
+  const [view, setView] = useState<"landing" | "dashboard">("landing");
 
   return (
-    <div className="bg-surface min-h-screen text-on-surface">
+    <div className="min-h-screen bg-surface text-on-surface">
       <AnimatePresence mode="wait">
-        {currentView === View.LANDING ? (
+        {view === "landing" ? (
           <motion.div
             key="landing"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <LandingPage onStartAnalysis={() => setCurrentView(View.DASHBOARD)} />
+            <LandingPage onLaunch={() => setView("dashboard")} />
           </motion.div>
         ) : (
           <motion.div
@@ -29,11 +25,12 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <Dashboard onBack={() => setCurrentView(View.LANDING)} />
+            <Dashboard onBack={() => setView("landing")} />
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

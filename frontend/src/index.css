@@ -1,26 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Fonts */
+  .font-sans { font-family: "Inter", ui-sans-serif, system-ui, sans-serif; }
+  .font-display { font-family: "Plus Jakarta Sans", sans-serif; }
+  .font-mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace; }
+
+  /* Colors mapped from the AI Studio theme */
+  .text-primary-navy { color: #0f172a; }
+  .bg-primary-navy { background-color: #0f172a; }
+  .border-primary-navy { border-color: #0f172a; }
+  .shadow-primary-navy\/10 { --tw-shadow-color: rgba(15, 23, 42, 0.1); }
+  .shadow-primary-navy\/20 { --tw-shadow-color: rgba(15, 23, 42, 0.2); }
+
+  .text-medical-blue { color: #0ea5e9; }
+  .bg-medical-blue { background-color: #0ea5e9; }
+  .bg-medical-blue\/5 { background-color: rgba(14, 165, 233, 0.05); }
+  .border-medical-blue { border-color: #0ea5e9; }
+
+  .text-accent-blue { color: #38bdf8; }
+  .bg-accent-blue { background-color: #38bdf8; }
+
+  .text-surgical-white { color: #f8fafc; }
+  .bg-surgical-white { background-color: #f8fafc; }
+
+  .bg-surface { background-color: #f7f9fb; }
+  .text-on-surface { color: #191c1e; }
+  
+  .text-on-surface-variant { color: #45464d; }
+  .text-on-surface-variant\/70 { color: rgba(69, 70, 77, 0.7); }
+  .text-on-surface-variant\/40 { color: rgba(69, 70, 77, 0.4); }
+  
+  .bg-surface-container { background-color: #f1f5f9; } /* Smooth container fallback */
+}
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-surface text-on-surface font-sans;
+    background-color: #f7f9fb; /* Mapped to --color-surface */
+    color: #191c1e;            /* Mapped to --color-on-surface */
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    @apply antialiased;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 }
 
+/* Glass effect panels */
 .glass-panel {
-  background: rgba(7, 18, 42, 0.7);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
+.glass-card {
+  background: rgba(255, 255, 255, 0.40);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+/* Glow utilities */
 .neon-glow-cyan {
-  box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.18);
 }
 
 .neon-glow-blue {
-  box-shadow: 0 0 20px rgba(45, 91, 255, 0.2);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.18);
+}
+
+.clinical-glow {
+  box-shadow: 0 0 80px -20px rgba(14, 165, 233, 0.15);
+}
+
+/* Background mesh */
+.gradient-mesh {
+  background:
+    radial-gradient(at 0% 0%, #dae2fd 0px, transparent 50%),
+    radial-gradient(at 100% 0%, #c4e7ff 0px, transparent 50%),
+    radial-gradient(at 100% 100%, #e0f2fe 0px, transparent 50%);
+  opacity: 0.15;
 }
