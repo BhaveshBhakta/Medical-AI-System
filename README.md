@@ -62,8 +62,9 @@ Multi-step reasoning pipeline including:
 
 ## Website Overview
 
-<img width="1837" height="1080" alt="Landing page" src="https://github.com/user-attachments/assets/fa1b60e4-ac08-4aff-8965-5b20ff84894d" />
-<img width="1830" height="1074" alt="Dashboard page" src="https://github.com/user-attachments/assets/0482c8b9-1a89-4c40-9a89-4657348c5ff6" />
+<img width="1897" height="979" alt="health1" src="https://github.com/user-attachments/assets/1fb52ea5-0f66-4e9a-9a40-6632c8afa2aa" />
+<img width="1899" height="974" alt="health2" src="https://github.com/user-attachments/assets/eb65e577-e8f1-41e8-8811-73ebbfc52bb1" />
+<img width="1335" height="956" alt="health3" src="https://github.com/user-attachments/assets/1b2eb0ea-1f22-4b3d-a936-c59e2a58144e" />
 
 ---
 
