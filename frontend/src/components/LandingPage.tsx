@@ -436,7 +436,7 @@ function Ecosystem() {
               transition={{ duration: 1 }}
               className="max-w-sm"
             >
-               <p className="text-lg text-on-surface-variant/60 font-light leading-relaxed">
+               <p className="text-lg text-on-surface font-sans leading-relaxed">
                 Interdisciplinary applications designed to scale from academic research to high-volume clinical workflows.
                </p>
             </motion.div>
